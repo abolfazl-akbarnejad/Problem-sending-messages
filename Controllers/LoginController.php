@@ -30,28 +30,16 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         $to = $request->input('phone_number');
-        // $text = 'ابوالفضل اکبرنژاد عزیز فردی سعی بر ورود به پنل مدیریت سایت داشته اگر شما اقدام به این کار کرده اید از زمر عبور: 2754 در قسمت فراموشی رمز عبور میتوانید وارد پنل مدیریت سایت شوید. http://abolfazlakbarnejad.ir/';
-        // $result = $this->meliPayamak->sendSms($to, $text);
-        // return dd($result);
-
-        // $meliPayamak = resolve(MeliPayamak::class);
-        // $meliPayamak->sendPatternSms(
-        //     $to, // شماره کاربر
-        //     "242272", // کد پترن که در پنل ملی پیامک ساختید
-        //     ['1234'] // آرایه متغییرهای پترن به ترتیب
-        // );
+      
+        $phone_number = 9157214820;
+        $message =   'ابوالفضل عزیز فردی سعی بر ورود به پنل مدیریت سایت داشته اگر شما اقدام به این کار کرده اید از زمر عبور: 5836 در قسمت فراموشی رمز عبور میتوانید وارد پنل مدیریت سایت شوید. http://abolfazlakbarnejad.ir/ ';
 
 
-        // $phone_number = 9157214820;
-        // $message =   'ابوالفضل عزیز فردی سعی بر ورود به پنل مدیریت سایت داشته اگر شما اقدام به این کار کرده اید از زمر عبور: 5836 در قسمت فراموشی رمز عبور میتوانید وارد پنل مدیریت سایت شوید. http://abolfazlakbarnejad.ir/ ';
-
-
-        // //toplern
 
         $smsService = new SmsService();
         $smsService->setFrom(Config::get('sms.otp_from'));
         $smsService->setTo([$to]);
-        $smsService->setText('تست');
+        $smsService->setText($message);
         $smsService->setIsFlash(true);
 
         $messagesService = new MessageSerivce($smsService);
